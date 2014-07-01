@@ -21,6 +21,7 @@ bigdatabasic
     su - hadoop 
     
     mv   hadoop-1.2.1.tar.gz    /usr/local/hadoop/hadoop-1.2.1.tar.gz 
+    cd   /usr/local/hadoop
     tar  xvzf  hadoop-1.2.1.tar.gz
 
 #### .bashrc 설정 : Windows의 환경 변수와 동일 기능
