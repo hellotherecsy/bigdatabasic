@@ -74,6 +74,17 @@ bigdatabasic
       <value> 192.168.122.201:9001</value>
     </property>
 
+#### conf/ masters 파일 수정 : 보조 네임 노드 주소
+>##### vi  conf/ masters 
+
+    192.168.122.202 혹은 bigdata01-02
+
+#### conf/ slaves 파일 수정 : 데이터 노드 주소
+>##### vi  conf/ slaves 
+
+    192.168.122.202 혹은 bigdata01-02
+    192.168.122.203 혹은 bigdata01-03
+
 
 #### 설정된 구성 파일을 모든 데이터 노드에 복사
 
