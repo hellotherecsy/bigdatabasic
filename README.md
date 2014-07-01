@@ -44,7 +44,7 @@ bigdatabasic
 >##### vi  conf/hadoop-env.sh
 
     # export JAVA_HOME=/usr/lib/j2sdk1.5-sun
-    export JAVA_HOME =/usr/local/jdk1.7.0_55
+    export JAVA_HOME=/usr/local/jdk1.7.0_55
 
 
 #### conf/core-site.xml 파일 수정 : 아래 내용 추가
@@ -82,19 +82,19 @@ bigdatabasic
 
     <property>	
       <name>mapred.job.tracker</name>	
-      <value> 192.168.122.201:9001</value>
+      <value>192.168.122.201:9001</value>
     </property>
 
 #### conf/masters 파일 수정 : 보조 네임 노드 주소
 >##### vi conf/masters 
 
-    192.168.122.202 혹은 bigdata01-02
+    bigdata01-02
 
 #### conf/slaves 파일 수정 : 데이터 노드 주소
 >##### vi  conf/slaves 
 
-    192.168.122.202 혹은 bigdata01-02
-    192.168.122.203 혹은 bigdata01-03
+    bigdata01-02
+    bigdata01-03
 
 
 #### 설정된 구성 파일을 모든 데이터 노드에 복사
