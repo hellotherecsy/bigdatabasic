@@ -2,18 +2,19 @@ bigdatabasic
 ============
 
 
-#### 하둡 실행 계정으로 수행(hadoop)
 
-    su - hadoop
-    
-    wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
-
-#### 하둡 설치 폴더 생성 (root 계정)
+#### 하둡 설치 폴더 생성 (root 계정)  : 3대 장비 모두에 설정
 
     su - 
     
     mkdir   /usr/local/hadoop/
     chown  hadoop:hadoop   /usr/local/hadoop/ 
+
+#### 하둡 실행 계정으로 수행(hadoop) : name node에만 설치 후 나중에 전체 내용 복사
+
+    su - hadoop
+    
+    wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
 
 #### 압축  해제
 
@@ -88,7 +89,7 @@ bigdatabasic
 
 #### 설정된 구성 파일을 모든 데이터 노드에 복사
 
-    scp  conf/*  hadoop@192.168.122.202:/usr/local/hadoop/hadoop-1.2.1/conf/
+    scp  -r  /usr/local/hadoop/hadoop-1.2.1  bigdata01-02:/usr/local/hadoop/
 
 
 
