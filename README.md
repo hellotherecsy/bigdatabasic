@@ -2,11 +2,12 @@ bigdatabasic
 ============
 
 
-하둡 실행 계정으로 수행(hadoop)
-
+#### 하둡 실행 계정으로 수행(hadoop)
+`
 wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
 
-하둡 설치 폴더 생성 (root 계정)
+`
+#### 하둡 설치 폴더 생성 (root 계정)
 
 mkdir   /usr/local/hadoop/    
 chown  hadoop:hadoop   /usr/local/hadoop/ 
