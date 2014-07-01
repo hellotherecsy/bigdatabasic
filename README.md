@@ -24,14 +24,14 @@ bigdatabasic
     export PATH=$PATH:/usr/local/hadoop/hadoop-1.2.1/bin:$JAVA_HOME/bin
 
 #### conf/hadoop-env.sh 파일 수정 : 아래 내용 추가
-##### vi  conf/hadoop-env.sh
+>##### vi  conf/hadoop-env.sh
 
     # export JAVA_HOME=/usr/lib/j2sdk1.5-sun
     export JAVA_HOME =/usr/local/jdk1.7.0_55
 
 
 #### conf/core-site.xml 파일 수정 : 아래 내용 추가
-##### vi  conf/core-site.xml
+>##### vi  conf/core-site.xml
 
     <property>	
       <name>fs.default.name</name>	
@@ -40,18 +40,33 @@ bigdatabasic
 
 
 #### conf/ hdfs-site.xml 파일 수정 : 아래 내용 추가
-##### vi conf/ hdfs-site.xml 
+>##### vi conf/ hdfs-site.xml 
 
-    <property>	<name>dfs.name.dir</name>	<value>/home/hadoop/namenode</value></property>
-    <property>	<name>dfs.data.dir</name>	<value>/home/hadoop/data1</value></property>
-    <property>	<name>fs.checkpoint.dir</name>	<value>/home/hadoop/checkpoint</value></property>
-    <property>	<name>dfs.replication</name>	<value>2</value></property>
+    <property>	
+      <name>dfs.name.dir</name>	
+      <value>/home/hadoop/namenode</value>
+    </property>
+    <property>	
+      <name>dfs.data.dir</name>	
+      <value>/home/hadoop/data1</value>
+    </property>
+    <property>	
+      <name>fs.checkpoint.dir</name>	
+      <value>/home/hadoop/checkpoint</value>
+    </property>
+    <property>	
+      <name>dfs.replication</name>	
+      <value>2</value>
+    </property>
 
 
 #### conf/ mapred-site.xml 파일 수정 : 아래 내용 추가
-##### vi  conf/ mapred-site.xml 
+>##### vi  conf/ mapred-site.xml 
 
-    <property>	<name>mapred.job.tracker</name>	<value> 192.168.122.201:9001</value></property>
+    <property>	
+      <name>mapred.job.tracker</name>	
+      <value> 192.168.122.201:9001</value>
+    </property>
 
 
 #### 설정된 구성 파일을 모든 데이터 노드에 복사
