@@ -45,8 +45,8 @@ bigdatabasic
     </property>
 
 
-#### conf/ hdfs-site.xml 파일 수정 : 아래 내용 추가
->##### vi conf/ hdfs-site.xml 
+#### conf/hdfs-site.xml 파일 수정 : 아래 내용 추가
+>##### vi conf/hdfs-site.xml 
 
     <property>	
       <name>dfs.name.dir</name>	
@@ -66,21 +66,21 @@ bigdatabasic
     </property>
 
 
-#### conf/ mapred-site.xml 파일 수정 : 아래 내용 추가
->##### vi  conf/ mapred-site.xml 
+#### conf/mapred-site.xml 파일 수정 : 아래 내용 추가
+>##### vi  conf/mapred-site.xml 
 
     <property>	
       <name>mapred.job.tracker</name>	
       <value> 192.168.122.201:9001</value>
     </property>
 
-#### conf/ masters 파일 수정 : 보조 네임 노드 주소
->##### vi  conf/ masters 
+#### conf/masters 파일 수정 : 보조 네임 노드 주소
+>##### vi conf/masters 
 
     192.168.122.202 혹은 bigdata01-02
 
-#### conf/ slaves 파일 수정 : 데이터 노드 주소
->##### vi  conf/ slaves 
+#### conf/slaves 파일 수정 : 데이터 노드 주소
+>##### vi  conf/slaves 
 
     192.168.122.202 혹은 bigdata01-02
     192.168.122.203 혹은 bigdata01-03
