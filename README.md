@@ -25,7 +25,7 @@ bigdatabasic
     tar  xvzf  hadoop-1.2.1.tar.gz
 
 #### .bashrc 설정 : Windows의 환경 변수와 동일 기능
->##### vi  .bashrc 
+>##### vi  ~/.bashrc 
 
     export JAVA_HOME=/usr/local/jdk1.7.0_55
     export HADOOP_INSTALL=/usr/local/hadoop/hadoop-1.2.1
