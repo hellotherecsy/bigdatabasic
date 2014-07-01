@@ -10,13 +10,13 @@ bigdatabasic
     mkdir   /usr/local/hadoop/
     chown  hadoop:hadoop   /usr/local/hadoop/ 
 
-#### 하둡 실행 계정으로 수행(hadoop) : name node에만 설치 후 나중에 전체 내용 복사
+#### 하둡 패키지 다운로드 (hadoop 계정) : name node에만 설치 후 나중에 전체 내용 복사
 
     su - hadoop
     
     wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
 
-#### 압축  해제
+#### 압축  해제 (hadoop 계정)
 
     su - hadoop 
     
@@ -30,6 +30,15 @@ bigdatabasic
     export JAVA_HOME=/usr/local/jdk1.7.0_55
     export HADOOP_INSTALL=/usr/local/hadoop/hadoop-1.2.1
     export PATH=$PATH:/usr/local/hadoop/hadoop-1.2.1/bin:$JAVA_HOME/bin
+    
+>##### ~/.bashrc 복사
+
+    scp  ~/.bashrc  bigdata01-02:
+    scp  ~/.bashrc  bigdata01-03:
+
+#### HADOOP_HOME으로 이동
+>##### cd  /usr/local/hadoop/hadoop-1.2.1
+
 
 #### conf/hadoop-env.sh 파일 수정 : 아래 내용 추가
 >##### vi  conf/hadoop-env.sh
@@ -91,6 +100,7 @@ bigdatabasic
 #### 설정된 구성 파일을 모든 데이터 노드에 복사
 
     scp  -r  /usr/local/hadoop/hadoop-1.2.1  bigdata01-02:/usr/local/hadoop/
+    scp  -r  /usr/local/hadoop/hadoop-1.2.1  bigdata01-03:/usr/local/hadoop/
 
 
 
