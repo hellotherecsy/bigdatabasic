@@ -3,21 +3,27 @@ bigdatabasic
 
 
 #### 하둡 실행 계정으로 수행(hadoop)
-`
+
+    su - hadoop
+    
     wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
-`
 
 #### 하둡 설치 폴더 생성 (root 계정)
 
+    su - 
+    
     mkdir   /usr/local/hadoop/
     chown  hadoop:hadoop   /usr/local/hadoop/ 
 
 #### 압축  해제
 
+    su - hadoop 
+    
     mv   hadoop-1.2.1.tar.gz    /usr/local/hadoop/hadoop-1.2.1.tar.gz 
     tar  xvzf  hadoop-1.2.1.tar.gz
 
-#### vi  .bashrc 
+#### .bashrc 설정 : Windows의 환경 변수와 동일 기능
+>##### vi  .bashrc 
 
     export JAVA_HOME=/usr/local/jdk1.7.0_55
     export HADOOP_INSTALL=/usr/local/hadoop/hadoop-1.2.1
