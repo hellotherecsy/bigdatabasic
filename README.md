@@ -19,7 +19,9 @@ tar  xvzf  hadoop-1.2.1.tar.gz
 vi  .bashrc 
 
 export JAVA_HOME=/usr/local/jdk1.7.0_55
+
 export HADOOP_INSTALL=/usr/local/hadoop/hadoop-1.2.1
+
 export PATH=$PATH:/usr/local/hadoop/hadoop-1.2.1/bin:$JAVA_HOME/bin
 
 conf/hadoop-env.sh 파일 수정 : 아래 내용 추가
