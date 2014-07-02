@@ -36,8 +36,32 @@ bigdatabasic
 
 ========
 
-#### hadoop 설치: name node에만 설치 후 나중에 전체 내용 복사
+hadoop 계정으로 이동 후
 
+==============
+
+#### ssh 설치 : name node에서 수행 
+>##### ssh key 생성 (ssh-keygen) 
+
+    su - hadoop
+    
+    cd ~
+    ls  -la 
+    
+    ssh-keygen  -t  rsa  -P  ''  (공백문자  : 작은 따옴표 2개 임)
+    cat   ~/.ssh/id_rsa.pub  >>  ~/.ssh/authorized_keys
+
+>##### ssh public key 복사 
+    
+    ssh-copy-id   hadoop@bigdata01-02  (namenode에서 2번 데이터 노드로 접속 위해)
+    ssh-copy-id   hadoop@bigdata01-03  (namenode에서 3번 데이터 노드로 접속 위해) 
+    
+    scp  ~/.ssh/id*  hadoop@bigdata01-02:~/.ssh/  (2번 데이터 노드에서 namenode로 접속 위해)
+    scp  ~/.ssh/id*  hadoop@bigdata01-03:~/.ssh/  (3번 데이터 노드에서 namenode로 접속 위해)
+
+    ssh bigdata01-02  (패스워드 없이 접속 가능한 지 확인)
+
+#### hadoop 설치 : name node에만 설치 후 나중에 전체 내용 복사
 >##### 하둡 패키지 다운로드 
 
     su - hadoop
