@@ -23,8 +23,10 @@ bigdatabasic
 >##### java 링크
 
     which  java
-    unlink   /usr/bin/java
-    ln -s  /usr/local/jdk1.7.0_55/bin/java   /usr/bin/java
+    unlink   /usr/bin/java  (기존에 연결된 링크가 있다면 연결 해제)
+    
+    ln -s  /usr/local/jdk1.7.0_55/bin/java   /usr/bin/java  (새로 설치한 자바로 링크)
+    
     java  -version
 
 
