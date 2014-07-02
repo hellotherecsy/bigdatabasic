@@ -1,15 +1,13 @@
 bigdatabasic
 ============
 
-#### 최초 접속 후 계정 생성
->##### root / bigdata 계정으로 접속
+#### 최초 접속 후 (root / bigdata) 3대 VM에 동일한 작업 반복
+>##### hadoop 계정 생성
 
     adduser  hadoop
     passwd  hadoop
     패스워드 입력 :
 
-
-#### JDK 설치
 >##### java 확인 및 다운로드 설치
 
     java –version 
@@ -30,23 +28,22 @@ bigdatabasic
     java  -version
 
 
-#### 하둡 설치 폴더 생성 (root 계정)  : 3대 장비 모두에 설정
+>##### 하둡 설치 폴더 생성 
 
-    su - 
-    
     mkdir   /usr/local/hadoop/
     chown  hadoop:hadoop   /usr/local/hadoop/ 
 
-#### 하둡 패키지 다운로드 (hadoop 계정) : name node에만 설치 후 나중에 전체 내용 복사
+
+========
+
+#### hadoop 설치: name node에만 설치 후 나중에 전체 내용 복사
+
+>##### 하둡 패키지 다운로드 
 
     su - hadoop
     
     wget   http://mirror.apache-kr.org/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
 
-#### 압축  해제 (hadoop 계정)
-
-    su - hadoop 
-    
     mv   hadoop-1.2.1.tar.gz    /usr/local/hadoop/hadoop-1.2.1.tar.gz 
     cd   /usr/local/hadoop
     tar  xvzf  hadoop-1.2.1.tar.gz
@@ -63,18 +60,18 @@ bigdatabasic
     scp  ~/.bashrc  bigdata01-02:
     scp  ~/.bashrc  bigdata01-03:
 
-#### HADOOP_HOME으로 이동
->##### cd  /usr/local/hadoop/hadoop-1.2.1
+#### HADOOP 설정 파일 수정
+>##### HADOOP_HOME으로 이동
+ 
+    cd  /usr/local/hadoop/hadoop-1.2.1
 
 
-#### conf/hadoop-env.sh 파일 수정 : 아래 내용 추가
 >##### vi  conf/hadoop-env.sh
 
     # export JAVA_HOME=/usr/lib/j2sdk1.5-sun
     export JAVA_HOME=/usr/local/jdk1.7.0_55
 
 
-#### conf/core-site.xml 파일 수정 : 아래 내용 추가
 >##### vi  conf/core-site.xml
 
     <property>	
@@ -84,7 +81,6 @@ bigdatabasic
     </property>
 
 
-#### conf/hdfs-site.xml 파일 수정 : 아래 내용 추가
 >##### vi conf/hdfs-site.xml 
 
     <property>	
@@ -105,7 +101,6 @@ bigdatabasic
     </property>
 
 
-#### conf/mapred-site.xml 파일 수정 : 아래 내용 추가
 >##### vi  conf/mapred-site.xml 
 
     <property>	
@@ -114,12 +109,10 @@ bigdatabasic
       <description>IP는 각자의 네임노드 IP를 쓰세요. 192.168.122.201라고 쓰시면 앙대요</description>
     </property>
 
-#### conf/masters 파일 수정 : 보조 네임 노드 주소
 >##### vi conf/masters 
 
     bigdata01-02
 
-#### conf/slaves 파일 수정 : 데이터 노드 주소
 >##### vi  conf/slaves 
 
     bigdata01-02
