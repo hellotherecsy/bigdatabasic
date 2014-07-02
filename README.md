@@ -1,6 +1,31 @@
 bigdatabasic
 ============
 
+#### 최초 접속 후 계정 생성
+>##### root / bigdata 계정으로 접속
+
+    adduser  hadoop
+    passwd  hadoop
+    패스워드 입력 :
+
+
+#### JDK 설치
+>##### java 확인 및 다운로드 설치
+
+    java –version 
+        
+    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie"  http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-x64.tar.gz
+    
+    mv jdk-7u55-linux-x64.tar.gz?AuthParam=xxxxxxxxxxxxxxxx   /usr/local/jdk-7u55-linux-x64.tar.gz
+    cd  /usr/local
+    tar  -xzvf  jdk-7u55-linux-x64.tar.gz
+
+>##### java 링크
+
+    which  java
+    unlink   /usr/bin/java
+    ln -s  /usr/local/jdk1.7.0_55/bin/java   /usr/bin/java
+    java  -version
 
 
 #### 하둡 설치 폴더 생성 (root 계정)  : 3대 장비 모두에 설정
