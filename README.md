@@ -52,7 +52,8 @@ bigdatabasic
 
     <property>	
       <name>fs.default.name</name>	
-      <value>hdfs://192.168.122.201:9000</value>
+      <value>hdfs://192.168.122.201:9000</value>
+      <description>IP는 각자의 네임노드 IP를 쓰세요. 192.168.122.201라고 쓰시면 앙대요</description>
     </property>
 
 
@@ -83,6 +84,7 @@ bigdatabasic
     <property>	
       <name>mapred.job.tracker</name>	
       <value>192.168.122.201:9001</value>
+      <description>IP는 각자의 네임노드 IP를 쓰세요. 192.168.122.201라고 쓰시면 앙대요</description>
     </property>
 
 #### conf/masters 파일 수정 : 보조 네임 노드 주소
