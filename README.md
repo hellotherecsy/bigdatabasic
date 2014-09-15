@@ -48,17 +48,15 @@ hadoop 계정으로 이동 후
     cd ~
     ls  -la 
     
-    ssh-keygen  -t  rsa  -P  ''  (공백문자  : 작은 따옴표 2개 임)
-    cat   ~/.ssh/id_rsa.pub  >>  ~/.ssh/authorized_keys
-
+    ssh-keygen  
+    
 >##### ssh public key 복사 
     
-    ssh-copy-id   hadoop@bigdata01-02  (namenode에서 2번 데이터 노드로 접속 위해)
-    ssh-copy-id   hadoop@bigdata01-03  (namenode에서 3번 데이터 노드로 접속 위해) 
+    ssh-copy-id  -i  hadoop@bigdata01-01  (namenode에서 1번 데이터 노드로 접속 위해)
+    ssh-copy-id  -i  hadoop@bigdata01-02  (namenode에서 2번 데이터 노드로 접속 위해)
+    ssh-copy-id  -i  hadoop@bigdata01-03  (namenode에서 3번 데이터 노드로 접속 위해) 
     
-    scp  ~/.ssh/id*  hadoop@bigdata01-02:~/.ssh/  (2번 데이터 노드에서 namenode로 접속 위해)
-    scp  ~/.ssh/id*  hadoop@bigdata01-03:~/.ssh/  (3번 데이터 노드에서 namenode로 접속 위해)
-
+    
     ssh bigdata01-02  (패스워드 없이 접속 가능한 지 확인)
 
 #### hadoop 설치 : name node에만 설치 후 나중에 전체 내용 복사
@@ -149,7 +147,63 @@ hadoop 계정으로 이동 후
     scp  -r  /usr/local/hadoop/hadoop-1.2.1  bigdata01-03:/usr/local/hadoop/
 
 
+bigdatabasic (Ambari)
+============
+
+#### Ambari 설치 사전 설정
+>##### password-less 설정 
+
+    ssh-keygen 후 엔터키, 엔터키, 엔터키
+    ssh-copy-id -i .ssh/id_rsa.pub <각 3개 host> 후 연결 확인
+    
+>##### iptables off
+
+    chkconfig iptables off
+    /etc/init.d/iptables stop
+  
+>##### selinux disable
+
+    setenforce 0
+    vim /etc/yum/pluginconf.d/refresh-packagekit.conf 후 enabled=0 으로 수정
+
+>##### ntp 설정
+
+    service ntpd restart
+    chkconfig ntpd on
 
 
+>##### ntp 설정 (설정 오류시)
+
+    yum install ntp
+    vim /etc/ntp.conf 후
+    -- 1번 서버에서 기존 server 들은 주석 처리 후 아래를 추가
+      server 0.kr.pool.ntp.org
+      server 1.asia.pool.ntp.org
+      server 2.asia.pool.ntp.org
+    -- 2,3번 서버에서는 마찬가지로 다른 server 들은 주석 처리 후 1번 서버 IP혹은 hostname 추가
+      server bigdata10-01 (1번 서버 hostname)
+
+>##### openssl upgrade (1.0.1e-15 에서 1.0.1e-e16 으로)
+
+    yum upgrade openssl
 
 
+#### Ambari 서버 설치 - 1번 서버에서 수행
+>##### Repos 설정
+
+    wget http://public-repo-1.hortonworks.com/ambari/centos6/1.x/updates/1.6.0/ambari.repo
+    cp ambari.repo /etc/yum.repos.d
+    yum repolist 해서 Ambari 1.x, HDP-UTILS 가 나오는지 확인
+
+>##### Ambari Install
+
+    yum install ambari-server
+    ambari-server setup 후 엔터, 엔터, JDK 설정 시 3. Custom JDK 선택 후 /usr/java/jdk 적어준다. 그 뒤 엔터, 엔터
+
+>##### Ambari Start
+
+    ambari-server start
+    ps -ef | grep Ambari 로 프로세스 확인    
+
+
+#### Ambari 서버 설치 - 1번 서버에서 수행
