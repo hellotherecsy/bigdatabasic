@@ -207,3 +207,33 @@ bigdatabasic (Ambari)
 
 
 #### Ambari 서버 설치 - 1번 서버에서 수행
+>##### Log into Amabari
+  - 브라우저에서 http://{ambari-server}:8080 혹은 ssh tunneling 이 되어 있다면 http://localhost:8080 으로 접속 한다.
+  - admin/admin 으로 접속
+
+  - cluster이름을 넣어준다. (예: bigdata10)
+  - HDP 2.1 선택
+
+  - Target Host에는 3개 hostname으로 다 넣어준다. 
+    (예: bigdata10-01 
+         bigdata10-02 
+         bigdata10-03)
+
+  -  SSH Private Key에는 ambari-server가 설치된 서버(1번 서버)의 ~/.ssh/id_rsa 파일 내용을 copy and paste 로 넣어준다.
+
+  - 필요한 서비스 선택: HDFS, YARN, Hive, Tez, Nagios, Zookeeper 등 선택
+  
+  - Assign Masters
+    - 1번 서버: NameNode, History Server, Resource Manager, Zookeeper Server, 
+    - 2번 서버: SNameNode, App Timeline Server, Nagios Server, Zookeeper Server
+    - 3번 서버: Ganglia Server, Zookeeper Server
+
+  - Assign Slaves and Clients
+    - 2번, 3번 서버에 DataNode, NodeManager, Client 설치 한다.
+
+  - Customize Services 
+    - Hive 탭에서 Database password 설정
+    - Nagios 탭에서 Nagios Admin Passwrd와 Hadoop Admin email 설정
+    - Yarn 탭에서 yarn.timeline-service.store-class=org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore
+
+
