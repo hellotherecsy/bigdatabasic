@@ -151,22 +151,13 @@ bigdatabasic (Ambari)
 ============
 
 #### Ambari 설치 사전 설정
+
 >##### password-less 설정 
 
     ssh-keygen 후 엔터키, 엔터키, 엔터키
     ssh-copy-id -i .ssh/id_rsa.pub <각 3개 host> 후 연결 확인
     
->##### iptables off
-
-    chkconfig iptables off
-    /etc/init.d/iptables stop
-  
->##### selinux disable
-
-    setenforce 0
-    vim /etc/yum/pluginconf.d/refresh-packagekit.conf 후 enabled=0 으로 수정
-
->##### ntp 설정
+>##### ntp 설정(minimal 버전에는 추가 설치가 필요함)
 
     service ntpd restart
     chkconfig ntpd on
@@ -183,6 +174,16 @@ bigdatabasic (Ambari)
     -- 2,3번 서버에서는 마찬가지로 다른 server 들은 주석 처리 후 1번 서버 IP혹은 hostname 추가
       server bigdata10-01 (1번 서버 hostname)
 
+>##### selinux disable 
+
+    setenforce 0
+    vim /etc/yum/pluginconf.d/refresh-packagekit.conf 후 enabled=0 으로 수정
+
+>##### iptables off
+
+    chkconfig iptables off
+    /etc/init.d/iptables stop
+  
 >##### openssl upgrade (1.0.1e-15 에서 1.0.1e-e16 으로)
 
     yum upgrade openssl
