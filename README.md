@@ -238,3 +238,34 @@ bigdatabasic (Ambari)
     - Yarn 탭에서 yarn.timeline-service.store-class=org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore
 
 
+실습 파일 다운로드 
+============
+
+#### 1번 서버에 PuTTy접속
+>##### Log into hdfs
+
+    su - hdfs
+    
+>##### 실습 파일 다운로드
+
+    wget http://data.dft.gov.uk.s3.amazonaws.com/road-accidents-safety-data/Stats19-Data2005-2013.zip
+    unzip Stats19-Data2005-2013.zip
+    
+>##### HDFS 폴더 생성
+
+    hadoop fs -mkdir /upload
+    hadoop fs -mkdir /upload/acc
+    hadoop fs -mkdir /upload/cas
+    hadoop fs -mkdir /upload/veh
+    
+>##### HDFS로 파일 복사
+
+    hadoop fs -copyFromLocal  Accidents0513.csv  /upload/acc/
+    hadoop fs -copyFromLocal  Casualties0513.csv  /upload/cas/
+    hadoop fs -copyFromLocal  Vehicles0513.csv  /upload/veh/
+    
+    
+    
+    
+    
+    
