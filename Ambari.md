@@ -50,7 +50,9 @@ bigdatabasic (Ambari)
 >##### Ambari Install
 
     yum install ambari-server
-    ambari-server setup 후 엔터, 엔터, JDK 설정 시 3. Custom JDK 선택 후 /usr/java/jdk 적어준다. 그 뒤 엔터, 엔터
+    -- y 선택
+    ambari-server setup
+    -- 엔터, 엔터, 엔터, 엔터
 
 >##### Ambari Start
 
@@ -76,9 +78,9 @@ bigdatabasic (Ambari)
   - 필요한 서비스 선택: HDFS, YARN, Hive, Tez, Nagios, Zookeeper 등 선택
   
   - Assign Masters
-    - 1번 서버: NameNode, History Server, Resource Manager, Zookeeper Server, 
+    - 1번 서버: NameNode, History Server, Resource Manager, Ganglia Server, Zookeeper Server, 
     - 2번 서버: SNameNode, App Timeline Server, Nagios Server, Zookeeper Server
-    - 3번 서버: Ganglia Server, Zookeeper Server
+    - 3번 서버: Hive Server, Zookeeper Server
 
   - Assign Slaves and Clients
     - 2번, 3번 서버에 DataNode, NodeManager, Client 설치 한다.
